@@ -10,20 +10,20 @@ const App = () => {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
-      paddingLeft="80px"
-      paddingRight="80px"
-      paddingTop="20px"
-      paddingBottom="20px"
+      templateColumns={{
+        base: "1fr",
+        lg: "220px 1fr",
+      }}
     >
-      <GridItem area="nav">
+      <GridItem area="nav" paddingX={3} paddingY={5}>
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside">
+        <GridItem area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
       </Show>
-      <GridItem area="main">
+      <GridItem area="main" paddingX={3}>
         <GameGrid />
       </GridItem>
     </Grid>

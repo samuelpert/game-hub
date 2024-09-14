@@ -3,15 +3,10 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  key?: number;
 }
 
-const GenreItemContainer = ({ children, key }: Props) => {
-  return (
-    <ListItem padding="7px" key={key}>
-      {children}
-    </ListItem>
-  );
+const GenreItemContainer = ({ children }: Props) => {
+  return <ListItem padding="7px">{children}</ListItem>;
 };
 
 export default GenreItemContainer;

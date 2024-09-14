@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/apiClient"
-import { CanceledError } from "axios";
 import useFetchData from "./useFetchData";
+import { Genre } from "./useFetchGenres";
 
 export interface Platform {
     id: number;
@@ -16,8 +14,9 @@ export interface Game {
     background_image: string;
     parent_platforms: {platform: Platform}[]
     metacritic: number;
+    genre: Genre;
   }
 
-const useFetchGames = () => useFetchData<Game>("/games")
+const useFetchGames = (selectedGenre: Genre | null) => useFetchData<Game>("/games", {params: {genres: selectedGenre?.id}}, [selectedGenre?.id])
 
 export default useFetchGames;

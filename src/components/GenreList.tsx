@@ -1,10 +1,14 @@
 import { List } from "@chakra-ui/react";
-import useFetchGenres from "../hooks/useFetchGenres";
+import useFetchGenres, { Genre } from "../hooks/useFetchGenres";
 import SkeletonGenreItem from "./SkeletonGenreItem";
 import GenreItem from "./GenreItem";
 import GenreItemContainer from "./GenreItemContainer";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, isLoading, error } = useFetchGenres();
 
   // this will show nothing if there is an error to avoid so many confrotation error text.
@@ -18,13 +22,16 @@ const GenreList = () => {
       <List>
         {isLoading &&
           skeletons.map((skeleton) => (
-            <GenreItemContainer>
-              <SkeletonGenreItem key={skeleton} />
+            <GenreItemContainer key={skeleton}>
+              <SkeletonGenreItem />
             </GenreItemContainer>
           ))}
         {data.map((genre) => (
           <GenreItemContainer key={genre.id}>
-            <GenreItem genre={genre} />
+            <GenreItem
+              handleSelectedGenre={(genre) => onSelectGenre(genre)}
+              genre={genre}
+            />
           </GenreItemContainer>
         ))}
       </List>

@@ -6,9 +6,10 @@ import GenreItemContainer from "./GenreItemContainer";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useFetchGenres();
 
   // this will show nothing if there is an error to avoid so many confrotation error text.
@@ -29,6 +30,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
         {data.map((genre) => (
           <GenreItemContainer key={genre.id}>
             <GenreItem
+              selectedGenre={selectedGenre}
               handleSelectedGenre={(genre) => onSelectGenre(genre)}
               genre={genre}
             />

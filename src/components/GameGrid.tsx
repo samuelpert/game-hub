@@ -1,5 +1,5 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useFetchGames from "../hooks/useFetchGames";
+import useFetchGames, { Platform } from "../hooks/useFetchGames";
 import GameCard from "./GameCard";
 import SkeletonGameCard from "./SkeletonGameCard";
 import GameCardContainer from "./GameCardContainer";
@@ -7,17 +7,25 @@ import { Genre } from "../hooks/useFetchGenres";
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-const GameGrid = ({ selectedGenre }: Props) => {
-  const { data, error, isLoading } = useFetchGames(selectedGenre);
+const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+  const { data, error, isLoading } = useFetchGames(
+    selectedGenre,
+    selectedPlatform
+  );
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <>
       {error && <Text>{error}</Text>}
 
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={8}>
+      <SimpleGrid
+        paddingY={3}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        spacing={8}
+      >
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>

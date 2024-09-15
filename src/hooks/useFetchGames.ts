@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useFetchData from "./useFetchData";
 import { Genre } from "./useFetchGenres";
 
@@ -17,6 +18,6 @@ export interface Game {
     genre: Genre;
   }
 
-const useFetchGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useFetchData<Game>("/games", {params: {genres: selectedGenre?.id, platforms: selectedPlatform?.id}}, [selectedGenre?.id, selectedPlatform?.id])
+const useFetchGames = (gameQuery: GameQuery) => useFetchData<Game>("/games", {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id}}, [gameQuery])
 
 export default useFetchGames;

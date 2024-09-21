@@ -3,7 +3,6 @@ import useFetchGames, { Platform } from "../hooks/useFetchGames";
 import GameCard from "./GameCard";
 import SkeletonGameCard from "./SkeletonGameCard";
 import GameCardContainer from "./GameCardContainer";
-import { Genre } from "../hooks/useFetchGenres";
 import { GameQuery } from "../App";
 
 interface Props {

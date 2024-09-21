@@ -18,6 +18,6 @@ export interface Game {
     genre: Genre;
   }
 
-const useFetchGames = (gameQuery: GameQuery) => useFetchData<Game>("/games", {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.value}}, [gameQuery])
+const useFetchGames = (gameQuery: GameQuery) => useFetchData<Game>("/games", {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.value, search: gameQuery.searchText}}, [gameQuery])
 
 export default useFetchGames;

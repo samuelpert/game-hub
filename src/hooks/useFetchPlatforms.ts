@@ -1,4 +1,5 @@
 import useFetchData from "./useFetchData";
+import platforms from "../data/platforms";
 
 interface Platform {
     id: number;
@@ -6,6 +7,6 @@ interface Platform {
     slug: string;
 }
 
-const useFetchPlatforms = () => useFetchData<Platform>("platforms/lists/parents");
+const useFetchPlatforms = () => ({data: platforms, error: null});
 
 export default useFetchPlatforms;

@@ -1,4 +1,4 @@
-import { List } from "@chakra-ui/react";
+import { Heading, List } from "@chakra-ui/react";
 import useFetchGenres, { Genre } from "../hooks/useFetchGenres";
 import SkeletonGenreItem from "./SkeletonGenreItem";
 import GenreItem from "./GenreItem";
@@ -20,6 +20,9 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <>
+      <Heading fontSize="3xl" marginBottom={5} paddingX={1}>
+        Genres
+      </Heading>
       <List>
         {isLoading &&
           skeletons.map((skeleton) => (

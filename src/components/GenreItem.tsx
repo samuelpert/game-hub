@@ -14,6 +14,8 @@ const GenreItem = ({ genre, handleSelectedGenre, selectedGenre }: Props) => {
       <Image
         boxSize="32px"
         borderRadius={8}
+        // cover the space scaled with aspect ratio preserved
+        objectFit="cover"
         src={getCroppedImageUrl(genre.image_background)}
       />
       <Button
@@ -21,10 +23,10 @@ const GenreItem = ({ genre, handleSelectedGenre, selectedGenre }: Props) => {
         onClick={() => handleSelectedGenre(genre)}
         variant="link"
         fontSize="lg"
+        whiteSpace="normal"
+        textAlign="left"
       >
-        {genre.name === "Massively Multiplayer"
-          ? "Massive Multiplayer"
-          : genre.name}
+        {genre.name}
       </Button>
     </HStack>
   );

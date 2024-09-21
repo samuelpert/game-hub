@@ -15,7 +15,7 @@ export interface Game {
     background_image: string;
     parent_platforms: {platform: Platform}[]
     metacritic: number;
-    genre: Genre;
+    rating_top: number;
   }
 
 const useFetchGames = (gameQuery: GameQuery) => useFetchData<Game>("/games", {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.value, search: gameQuery.searchText}}, [gameQuery])

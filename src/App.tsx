@@ -27,18 +27,18 @@ const App = () => {
         lg: "220px 1fr",
       }}
     >
-      <GridItem area="nav" paddingX={3} paddingY={5}>
+      <GridItem area="nav" paddingX={4} paddingY={10}>
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside" paddingX={5}>
+        <GridItem area="aside" paddingX={2}>
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
         </GridItem>
       </Show>
-      <GridItem area="main">
+      <GridItem area="main" paddingX={4}>
         <Flex>
           <Box marginRight={4}>
             <PlatformSelector

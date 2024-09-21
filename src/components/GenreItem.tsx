@@ -20,9 +20,11 @@ const GenreItem = ({ genre, handleSelectedGenre, selectedGenre }: Props) => {
         fontWeight={genre.id == selectedGenre?.id ? "bold" : "normal"}
         onClick={() => handleSelectedGenre(genre)}
         variant="link"
-        fontSize="m"
+        fontSize="lg"
       >
-        {genre.name}
+        {genre.name === "Massively Multiplayer"
+          ? "Massive Multiplayer"
+          : genre.name}
       </Button>
     </HStack>
   );
